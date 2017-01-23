@@ -5,12 +5,14 @@
  */
 require("babel-polyfill");
 var app = require('../dist/app');
-var debug = require('debug')('family-tree:server');
+var debug = require('debug')('iHeartChallenge:server');
 var http = require('http');
 var log4js = require('log4js');
-log4js.configure('/Users/vinodm1986/Workspace/OK/express/family-tree/config/log4js.json');
+var log4jsConfig = require('../dist/config/log4js');
+console.log(log4jsConfig);
+log4js.configure(log4jsConfig);
 var log = log4js.getLogger("startup");
-
+console.log(log);
 /**
  * Get port from environment and store in Express.
  */

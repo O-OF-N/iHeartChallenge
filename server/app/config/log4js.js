@@ -1,23 +1,23 @@
-{
+const log4JsConfig = {
     "appenders": [
         {
             "type": "console"
         },
         {
             "type": "file",
-            "filename": "../log/app_log.log",
+            "filename": "../../logs/app_log.log",
             "absolute":"true",
             "maxLogSize": 20480,
             "category":"app"
         },{
             "type": "file",
-            "filename": "../log/startup_log.log",
+            "filename": "../../logs/startup_log.log",
             "absolute":"true",
             "maxLogSize": 20480,
             "category":"startup"
         },{
             "type": "file",
-            "filename": "../log/http_log.log",
+            "filename": "../../logs/http_log.log",
             "absolute":"true",
             "maxLogSize": 20480,
             "category":"http"
@@ -25,3 +25,5 @@
         
     ]
 }
+
+export default log4JsConfig;

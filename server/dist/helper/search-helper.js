@@ -9,6 +9,10 @@ var _axios = require('axios');
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _artist = require('../model/artist');
+
+var _artist2 = _interopRequireDefault(_artist);
+
 var _constants = require('../util/constants');
 
 var Constants = _interopRequireWildcard(_constants);
@@ -28,11 +32,11 @@ var SearchApi = exports.SearchApi = regeneratorRuntime.mark(function SearchApi(s
 
                 case 2:
                     results = _context.sent;
+                    return _context.abrupt('return', results.data.artists.map(function (data) {
+                        return new _artist2.default(data.artistName, replaceArtistID(Constants.ARTIST_IMAGE_URL, data.artistId));
+                    }));
 
-                    console.log(results);
-                    return _context.abrupt('return', results);
-
-                case 5:
+                case 4:
                 case 'end':
                     return _context.stop();
             }
@@ -42,5 +46,8 @@ var SearchApi = exports.SearchApi = regeneratorRuntime.mark(function SearchApi(s
 
 var replaceArtistName = function replaceArtistName(url, searchString) {
     return url.replace('{ARTIST_NAME}', searchString);
+};
+var replaceArtistID = function replaceArtistID(url, artistId) {
+    return url.replace('{ARTIST_ID}', artistId);
 };
 //# sourceMappingURL=search-helper.js.map

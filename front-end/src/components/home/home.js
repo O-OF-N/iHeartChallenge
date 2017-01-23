@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import TwoArtistLayout from '../two-artist-layout/two-artist-layout'
-import ThreeArtistLayout from '../three-artist-layout/three-artist-layout'
+import TwoArtistLayout from '../layouts/two-artist-layout';
+import ThreeArtistLayout from '../layouts/three-artist-layout';
+import SearchResultsLayout from '../layouts/search-results-layout';
 import './home.css';
 import Artists from '../../config/config'
-
-
-const buildThreeArtistComponent = (artists) => artists.map((artist, index) =>
-  index % 3 === 0 ? <ThreeArtistLayout key={index} artist1={artist} artist2={artists[index + 1]}
-    artist3={artists[index + 2]} /> : null
-);
 
 const buildTwoArtistComponent = (artists) => artists.map((artist, index) =>
   index % 2 === 0 ? <TwoArtistLayout key={index} artist1={artist} artist2={artists[index + 1]} /> : null
 );
+
+//const buildSearchResultsComponent = (artists) =>  ;
 
 class Home extends Component {
   constructor() {
@@ -39,7 +36,11 @@ class Home extends Component {
           <h2>iHeart Artist catalog</h2>
         </div>
         <div className="Artist-catalog">
-          {width > 769 ? buildThreeArtistComponent(artists) : buildTwoArtistComponent(artists)}
+          {width > 769 ? <ThreeArtistLayout artists={artists} /> :
+            <TwoArtistLayout artists={artists} />}
+        </div>
+        <div className="Artist-catalog">
+          <SearchResultsLayout artists={artists} />
         </div>
       </div>
     );
