@@ -1,0 +1,18 @@
+.App {
+  text-align: left;
+}
+
+.App-header {
+  background-color: maroon;
+  height: 5%;
+  padding: 0.5%;
+  color: white;
+  text-align: center;
+}
+
+.Artist-catalog {
+  background-color: white;
+  height: 80%;
+  padding: 0.5%;
+  color: maroon;
+}

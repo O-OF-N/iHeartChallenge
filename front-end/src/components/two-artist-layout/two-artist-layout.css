@@ -1,0 +1,10 @@
+.two-artist-element{
+    width: 49%;
+    float: left;
+    padding-bottom: 1%;
+    padding-top: 1%;   
+}
+
+.two-artist-layout{
+    width: 100%;
+}
