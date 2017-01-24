@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import TwoArtistLayout from '../layouts/two-artist-layout';
 import ThreeArtistLayout from '../layouts/three-artist-layout';
-import SearchResultsLayout from '../layouts/search-results-layout';
+import SearchBar from '../search-bar/search-bar';
 import './home.css';
 import Artists from '../../config/config'
 
-const buildTwoArtistComponent = (artists) => artists.map((artist, index) =>
-  index % 2 === 0 ? <TwoArtistLayout key={index} artist1={artist} artist2={artists[index + 1]} /> : null
-);
-
-//const buildSearchResultsComponent = (artists) =>  ;
 
 class Home extends Component {
+
   constructor() {
     super();
     this.state = {
       artists: Artists,
-      width: typeof window === 'object' ? window.innerWidth : null
-    }
+      width: typeof window === 'object' ? window.innerWidth : null,
+      search: false
+    };
   };
 
   componentDidMount() {
@@ -28,20 +25,30 @@ class Home extends Component {
     });
   };
 
+  updateArtists(artists) {
+    console.log(artists);
+    this.setState({ artists, search: true })
+  };
+
+  showHome() {
+    this.setState({ artists: Artists, search: false })
+  };
+
   render() {
-    const {artists, width} = this.state;
+    const {artists, width, search} = this.state;
     return (
       <div className="App">
         <div className="App-header">
           <h2>iHeart Artist catalog</h2>
         </div>
         <div className="Artist-catalog">
-          {width > 769 ? <ThreeArtistLayout artists={artists} /> :
-            <TwoArtistLayout artists={artists} />}
+          <button onClick={this.showHome.bind(this)}>Home </button>
+          <SearchBar onSearch={this.updateArtists.bind(this)} />
         </div>
         <div className="Artist-catalog">
-          <SearchResultsLayout artists={artists} />
-        </div>
+          {width > 769 ? <ThreeArtistLayout artists={artists} /> :
+            <TwoArtistLayout artists={artists} />}
+        </div> 
       </div>
     );
   };
