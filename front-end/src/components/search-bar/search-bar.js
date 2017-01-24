@@ -31,7 +31,7 @@ export default class SearchBar extends Component {
 
     render() {
         return <div className="search-div">
-            <input type="text" ref="searchString" placeholder="e.g.: Search for Taylor Swift"
+            <input type="text" ref="searchString" placeholder="e.g.: Search for Selena Gomez"
             autoFocus
     style={{width: '60%',height:'50%', marginRight: '2%', marginTop:'1%'}} onKeyPress={this.keyPress.bind(this)}/>
             <button onClick={this.search.bind(this)}
