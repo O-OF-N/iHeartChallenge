@@ -4,6 +4,7 @@ import ThreeArtistLayout from '../layouts/three-artist-layout';
 import SearchBar from '../search-bar/search-bar';
 import './home.css';
 import Artists from '../../config/config';
+import * as StateFunctions from './home-state';
 
 
 const NoResults = ()=><p>No Artists Found</p>
@@ -21,19 +22,16 @@ class Home extends Component {
 
   componentDidMount() {
     window.addEventListener("resize", () => {
-      this.setState({
-        width: typeof window === 'object' ? window.innerWidth : null
-      });
+      this.setState(StateFunctions.updateStateDimensions(this.state,window));
     });
   };
 
-  updateArtists(artists) {
-    console.log(artists);
-    this.setState({ artists, search: true })
+  setSearchResults(artists) {
+    this.setState(StateFunctions.updateState(this.state,artists,true));
   };
 
-  showHome() {
-    this.setState({ artists: Artists, search: false })
+  resetSearchResults() {
+    this.setState(StateFunctions.updateState(this.state,Artists,false));
   };
 
   render() {
@@ -44,8 +42,8 @@ class Home extends Component {
           <h2>iHeart Artist catalog</h2>
         </div>
         <div className="menu-bar">
-          <SearchBar onSearch={this.updateArtists.bind(this)} 
-          onClear={this.showHome.bind(this)}/>
+          <SearchBar onSearch={this.setSearchResults.bind(this)} 
+          onClear={this.resetSearchResults.bind(this)}/>
                     <div className="home-button">
           </div>
           
