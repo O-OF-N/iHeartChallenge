@@ -6,7 +6,7 @@ import './two-artist-layout.css';
 const TwoArtistLayout = props => {
     const {artists} = props;
     let [artist1, artist2] = [];
-    return <div>
+    return <div style={{height:'100%'}}>
         {artists.map((artist, index) => {
             return index % 2 === 0 ?
                 ([artist1, artist2] = artists.slice(index, index + 2),

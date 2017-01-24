@@ -3,8 +3,10 @@ import TwoArtistLayout from '../layouts/two-artist-layout';
 import ThreeArtistLayout from '../layouts/three-artist-layout';
 import SearchBar from '../search-bar/search-bar';
 import './home.css';
-import Artists from '../../config/config'
+import Artists from '../../config/config';
 
+
+const NoResults = ()=><p>No Artists Found</p>
 
 class Home extends Component {
 
@@ -35,19 +37,23 @@ class Home extends Component {
   };
 
   render() {
-    const {artists, width, search} = this.state;
+    const {artists, width} = this.state;
     return (
       <div className="App">
         <div className="App-header">
           <h2>iHeart Artist catalog</h2>
         </div>
-        <div className="Artist-catalog">
-          <button onClick={this.showHome.bind(this)}>Home </button>
-          <SearchBar onSearch={this.updateArtists.bind(this)} />
+        <div className="menu-bar">
+          <SearchBar onSearch={this.updateArtists.bind(this)} 
+          onClear={this.showHome.bind(this)}/>
+                    <div className="home-button">
+          </div>
+          
         </div>
         <div className="Artist-catalog">
-          {width > 769 ? <ThreeArtistLayout artists={artists} /> :
-            <TwoArtistLayout artists={artists} />}
+          {artists.length? width > 769 ? <ThreeArtistLayout artists={artists} /> :
+            <TwoArtistLayout artists={artists} />:
+          <NoResults/>}
         </div> 
       </div>
     );

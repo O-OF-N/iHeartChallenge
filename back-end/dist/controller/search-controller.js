@@ -30,35 +30,50 @@ var logger = log4js.getLogger("app");
 var router = _express2.default.Router();
 
 router.get('/:searchString', (0, _wrap2.default)(regeneratorRuntime.mark(function _callee(req, res, next) {
-    var result;
+    var searchString, result;
     return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
             switch (_context.prev = _context.next) {
                 case 0:
                     _context.prev = 0;
-                    _context.next = 3;
-                    return SearchHelper.SearchApi(req.params.searchString);
+                    searchString = req.params.searchString;
 
-                case 3:
-                    result = _context.sent;
+                    if (!searchString) {
+                        _context.next = 8;
+                        break;
+                    }
 
-                    res.send(result);
-                    _context.next = 11;
+                    _context.next = 5;
+                    return SearchHelper.SearchApi(searchString);
+
+                case 5:
+                    _context.t0 = _context.sent;
+                    _context.next = 9;
                     break;
 
-                case 7:
-                    _context.prev = 7;
-                    _context.t0 = _context['catch'](0);
+                case 8:
+                    _context.t0 = [];
 
-                    console.log(_context.t0.name);
-                    next(_context.t0);
+                case 9:
+                    result = _context.t0;
 
-                case 11:
+                    res.send(result);
+                    _context.next = 17;
+                    break;
+
+                case 13:
+                    _context.prev = 13;
+                    _context.t1 = _context['catch'](0);
+
+                    console.log(_context.t1.name);
+                    next(_context.t1);
+
+                case 17:
                 case 'end':
                     return _context.stop();
             }
         }
-    }, _callee, this, [[0, 7]]);
+    }, _callee, this, [[0, 13]]);
 })));
 
 exports.default = router;

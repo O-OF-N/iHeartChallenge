@@ -8,7 +8,7 @@
     "build": "./node_modules/.bin/babel -d dist app -s",
     "start": "node ./bin/www",
     "dev": "npm run clean && npm run build && npm start",
-    "test": "mocha ./test/**/*.js && mocha test -r blanket -R html-cov > coverage.html"
+    "test": "mocha --recursive --compilers js:babel-register"
   },
   "dependencies": {
     "axios": "^0.15.3",

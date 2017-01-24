@@ -11,10 +11,10 @@ const router = express.Router();
 
 router.get('/:searchString', co(function* (req, res, next) {
     try {
-        const result = yield SearchHelper.SearchApi(req.params.searchString);
+        const {searchString} = req.params;
+        const result = searchString?yield SearchHelper.SearchApi(searchString):[];
         res.send(result);
     } catch (err) {
-        console.log(err.name);
         next(err);
     }
 }));

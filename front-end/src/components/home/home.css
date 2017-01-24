@@ -1,5 +1,6 @@
 .App {
   text-align: left;
+  height:100%
 }
 
 .App-header {
@@ -8,6 +9,7 @@
   padding: 0.5%;
   color: white;
   text-align: center;
+  font-family: monospace;
 }
 
 .Artist-catalog {
@@ -15,4 +17,16 @@
   height: 80%;
   padding: 0.5%;
   color: maroon;
+}
+
+.menu-bar{
+  width: 100%;
+  height: 10%;
+  padding: 0.5%;
+}
+
+.home-button{
+  height: 100%;
+  width: 10%;
+  float: left;
 }
