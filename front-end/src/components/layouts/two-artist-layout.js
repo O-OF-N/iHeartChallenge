@@ -10,7 +10,8 @@ const TwoArtistLayout = props => {
         {artists.map((artist, index) => {
             return index % 2 === 0 ?
                 ([artist1, artist2] = artists.slice(index, index + 2),
-                    <div className="two-artist-layout" key={index}>
+                    <div className="two-artist-layout" key={index}
+                    style={{height:'46%', width:'100%',paddingBottom:'2.5%'}}>
                         <div className="two-artist-element"><Artist key={index} {...artist1} /></div>
                         {artist2 ? <div className="two-artist-element"><Artist key={index} {...artist2} /></div> : null}
                     </div>) : null
