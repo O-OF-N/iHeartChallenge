@@ -6,8 +6,9 @@
   "scripts": {
     "clean": "rm -rf dist/* && rm -rf dist && mkdir dist",
     "build": "./node_modules/.bin/babel -d dist app -s",
-    "start": "node ./bin/www",
-    "dev": "npm run clean && npm run build && npm start",
+    "runServer": "node ./bin/www",
+    "start": "npm run clean && npm run build && npm run runServer",
+    "postinstall": "npm start",
     "test": "mocha --recursive --compilers js:babel-register"
   },
   "dependencies": {

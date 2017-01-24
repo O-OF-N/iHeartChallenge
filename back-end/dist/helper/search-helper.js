@@ -32,11 +32,11 @@ var SearchApi = exports.SearchApi = regeneratorRuntime.mark(function SearchApi(s
 
                 case 2:
                     results = _context.sent;
-                    return _context.abrupt('return', results.data.artists.map(function (data) {
+                    return _context.abrupt('return', results && results.data && results.data.artists ? results.data.artists.map(function (data) {
                         return new _artist2.default(data.artistName, replaceArtistID(Constants.ARTIST_IMAGE_URL, data.artistId));
                     }).filter(function (artist) {
                         return artist != null;
-                    }).slice(0, 6));
+                    }).slice(0, 6) : []);
 
                 case 4:
                 case 'end':
@@ -49,6 +49,7 @@ var SearchApi = exports.SearchApi = regeneratorRuntime.mark(function SearchApi(s
 var replaceArtistName = function replaceArtistName(url, searchString) {
     return url.replace('{ARTIST_NAME}', searchString);
 };
+
 var replaceArtistID = function replaceArtistID(url, artistId) {
     return url.replace('{ARTIST_ID}', artistId);
 };

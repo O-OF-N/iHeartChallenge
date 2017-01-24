@@ -58,17 +58,16 @@ router.get('/:searchString', (0, _wrap2.default)(regeneratorRuntime.mark(functio
                     result = _context.t0;
 
                     res.send(result);
-                    _context.next = 17;
+                    _context.next = 16;
                     break;
 
                 case 13:
                     _context.prev = 13;
                     _context.t1 = _context['catch'](0);
 
-                    console.log(_context.t1.name);
                     next(_context.t1);
 
-                case 17:
+                case 16:
                 case 'end':
                     return _context.stop();
             }
