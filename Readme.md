@@ -20,4 +20,7 @@
     The application can also be started by running
     `npm start`
 
+    To test the application
+    `npm test`
+
     The application can be accessed by going to http:\\localhost:3000
